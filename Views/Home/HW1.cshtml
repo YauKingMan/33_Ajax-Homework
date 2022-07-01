@@ -38,6 +38,8 @@
         $("#a").click(function () {
             /*console.log("Hello");*/
             //    $('.display-4').text("Welcome MVC!!");})
+            $("#homework").remove(a);
+
             var emp = {
                 "employees": [
                     { "name": "Tom", "workYears": 3, "salary": 35000 },
@@ -45,7 +47,7 @@
                     { "name": "Mary", "workYears": 7, "salary": 45000 }
                 ]
             };
-            let a = "<tr><td>姓名</td><td>工作年資</td><td>薪水</td></tr>";
+            a = "<tr><td>姓名</td><td>工作年資</td><td>薪水</td></tr>";
             for (let i = 0; i < emp.employees.length; i++) {
 
                 a += `<tr><td>${emp.employees[i].name}</td><td>${emp.employees[i].workYears}</td><td>${emp.employees[i].salary}</td>`;

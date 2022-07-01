@@ -18,7 +18,7 @@ namespace prjAjax.Controllers
             _logger = logger;
         }
 
-        public IActionResult Index()
+        public IActionResult HW1()
         {
             return View();
         }
