@@ -1,0 +1,58 @@
+﻿@{ ViewData["Title"] = "Home Page"; }
+@section Styles{
+    <style>
+       /* h1 {
+            background-color: lightgray;
+        }*/
+
+       table{
+           border:2px solid red;
+           font-size:20px;
+           
+
+       }
+
+        table td {
+            border: 2px solid red;
+            font-size: 20px;
+            width: 100px;
+        }
+    </style>
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome</h1>
+    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <input type="button" class="btn-dark" id="a" value="Click"/>
+    <table id="homework"></table>
+</div>
+
+@section Scripts{
+    <script>
+        let a = document.getElementById("a");
+        //a.addEventListener("click",function () { 
+        //    console.log("Hello");
+        //    $('.display-4').text("Welcome MVC!!");
+        //    $('h1').attr('style', 'background-color:lightgray')
+               
+        $("#a").click(function () {
+            /*console.log("Hello");*/
+            //    $('.display-4').text("Welcome MVC!!");})
+            var emp = {
+                "employees": [
+                    { "name": "Tom", "workYears": 3, "salary": 35000 },
+                    { "name": "Jack", "workYears": 5, "salary": 40000 },
+                    { "name": "Mary", "workYears": 7, "salary": 45000 }
+                ]
+            };
+            let a = "<tr><td>姓名</td><td>工作年資</td><td>薪水</td></tr>";
+            for (let i = 0; i < emp.employees.length; i++) {
+
+                a += `<tr><td>${emp.employees[i].name}</td><td>${emp.employees[i].workYears}</td><td>${emp.employees[i].salary}</td>`;
+                   
+            }   
+            $("#homework").append(a);
+        })
+
+    </script>
+}
