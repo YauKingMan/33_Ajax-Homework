@@ -18,7 +18,28 @@ namespace prjAjax.Controllers
             _logger = logger;
         }
 
+        public IActionResult FirstAjax()
+        {
+            return View();
+        }
+
+        public IActionResult AjaxPost()
+        {
+            return View();
+        }
+
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+
         public IActionResult HW1()
+        {
+            return View();
+        }
+
+        public IActionResult HW2()
         {
             return View();
         }

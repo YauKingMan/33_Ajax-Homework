@@ -8,8 +8,6 @@
        table{
            border:2px solid red;
            font-size:20px;
-           
-
        }
 
         table td {
@@ -49,9 +47,7 @@
             };
             a = "<tr><td>姓名</td><td>工作年資</td><td>薪水</td></tr>";
             for (let i = 0; i < emp.employees.length; i++) {
-
-                a += `<tr><td>${emp.employees[i].name}</td><td>${emp.employees[i].workYears}</td><td>${emp.employees[i].salary}</td>`;
-                   
+                a += `<tr><td>${emp.employees[i].name}</td><td>${emp.employees[i].workYears}</td><td>${emp.employees[i].salary}</td>`;                  
             }   
             $("#homework").append(a);
         })
