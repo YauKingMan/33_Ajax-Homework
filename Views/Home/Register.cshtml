@@ -18,6 +18,10 @@
         <label for="InputAge">年紀</label>
         <input type="number" class="form-control" id="InputAge" name="age">
     </div>
+    <div class="custom-file  mt-3">
+        <input type="file" class="custom-file-input" id="customFile" name="file">
+        <label class="custom-file-label" for="customFile">選擇檔案</label>
+    </div>
     <button type="button" class="btn btn-primary mt-3">Submit</button>
 </form>
 <div class="alert alert-info" id="div1"></div>
@@ -31,8 +35,19 @@
         //evt 為自己設的物件
         evt.preventDefault(); //停止預設行為 submit link
             const formData = new FormData(document.formData);
+
+        //透過 fetch() 上傳圖檔
+        fetch('@Url.Content("~/api/register")', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.text())
+        .then(data => divInfo.innerHTML = data);
+
+        //=======================================================================================
+
         //step1
-        const xhr = new XMLHttpRequest();
+        @*const xhr = new XMLHttpRequest();
 
         //=======================================================================================
 
@@ -48,8 +63,8 @@
         //=======================================================================================
 
         //step2 formData
-        xhr.open('POST','@Url.Content("~/api/HW2")');
-        xhr.send(formData); //傳送到伺服器端的資料放入()內
+        xhr.open('POST','@Url.Content("~/api/Register")');
+        xhr.send(formData); //傳送到伺服器端的資料放入()內*@
     })
     </script>
 }

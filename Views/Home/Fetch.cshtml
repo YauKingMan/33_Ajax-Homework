@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewData["Title"] = "Fetch";
+}
+
+<h1>Fetch</h1>
+<img id="img1" />   
+@section Scripts{
+
+    <script>
+    fetch("@Url.Content("~/api/index")")
+        .then(function(response){
+            return response.text();
+         })
+        .then(function(data){
+            console.log(data);
+        })
+
+    fetch('@Url.Content("~/api/GetImageBytes/1")')
+            .then(response => response.blob())
+            .then(datas => {
+                const myImg = document.querySelector('#img1');
+                myImg.src = URL.createObjectURL(datas);
+            })
+    </script>
+
+}

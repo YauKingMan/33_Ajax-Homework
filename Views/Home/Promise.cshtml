@@ -1,0 +1,36 @@
+﻿
+@{
+    ViewData["Title"] = "Promise";
+}
+
+<h1>Promise</h1>
+
+@section Scripts{ 
+<script>
+/*const { data } = require("jquery");*/
+
+
+    function printSomething(data) {
+        const promise = new Promise(function (resolve, reject) {
+            setTimeout(function () {
+                resolve(data)
+            }, 1000);
+        })
+        return promise;
+    }
+
+    printSomething("A")
+        .then(function(data){
+            console.log(data);
+            return printSomething("B");
+        })
+        .then(function (data){
+            console.log(data)
+            return printSomething("C");
+        })
+        .then(function (data) {
+            console.log(data);
+        })
+        
+</script>
+}

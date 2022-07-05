@@ -56,7 +56,7 @@ namespace prjAjax
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=HW2}/{id?}");
+                    pattern: "{controller=Home}/{action=Register}/{id?}");
             });
         }
     }

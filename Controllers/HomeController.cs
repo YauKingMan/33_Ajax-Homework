@@ -33,6 +33,20 @@ namespace prjAjax.Controllers
             return View();
         }
 
+        public IActionResult Address()
+        {
+            return View();
+        }
+
+        public IActionResult Promise()
+        {
+            return View();
+        }
+
+        public IActionResult Fetch()
+        {
+            return View();
+        }
 
         public IActionResult HW1()
         {
