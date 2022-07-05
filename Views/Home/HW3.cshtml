@@ -1,0 +1,79 @@
+﻿
+@{
+    ViewData["Title"] = "HW3";
+}
+
+<h1>HW3</h1>
+<select id="select1"></select>
+<select id="select2"></select>
+<select id="select3"></select>
+
+@section Scripts{
+
+    <script>
+        const selCity = document.querySelector('#select1');
+        const selDistricts = document.querySelector("#select2");
+        const selRoad = document.querySelector("#select3");
+        getCity();
+        async function getCity() {
+            const response = await fetch("@Url.Content("~/api/city")");
+            const datas = await response.json();
+            datas.forEach(function (city) {
+                const opt = new Option(city, city);
+                selCity.options.add(opt);
+            })
+            await getDistricts();
+        }
+        selCity.addEventListener("change",getDistricts);
+        selDistricts.addEventListener("change", getRoad);
+
+        async function getDistricts() {
+            selDistricts.textContent = "";
+           /* $('#select2>option').remove();*/
+            const selectedCity = await selCity.options[selCity.selectedIndex].value
+            const response = await fetch("@Url.Content("~/api/districts")"+`?city=${selectedCity}`);
+            const datas = await response.json();
+            datas.forEach(function (districts) {
+                const opt = new Option(districts, districts);
+                selDistricts.options.add(opt);
+            })
+            await getRoad();
+        }
+
+         async function getRoad() {
+             selRoad.textContent = "";
+           /* $('#select2>option').remove();*/
+             const selectedDistricts = await selDistricts.options[selDistricts.selectedIndex].value
+             const response = await fetch("@Url.Content("~/api/roads")" + `?districts=${selectedDistricts}`);
+             const datas = await response.json();
+            datas.forEach(function (road) {
+                const opt = new Option(road, road);
+                selRoad.options.add(opt);
+            })
+        }
+
+
+    </script>
+    @*const selCity = document.querySelector('#select1');
+        selCity.addEventListener('change', () => {
+        //讀出使用者選擇的資料
+        console.log(selCity.options[selCity.selectedIndex].value);
+        })
+
+        xhr.open("GET","@Url.Content("~/api/city")");
+        xhr.send();
+
+        const xhr = new XMLHttpRequest();
+        xhr.addEventListener('load', () => {
+        //console.log(xhr.responseText);
+        //console.log(JSON.parse(xhr.responseText)); 將JSON字串轉成JSON物件
+        const datas = JSON.parse(xhr.responseText);
+        datas.forEach((city) => {
+        //將資料放進select標籤中
+        const opt = new Option(city, city);
+        selCity.options.add(opt);
+        })
+        })
+        xhr.open("GET","@Url.Content("~/api/city")");
+        xhr.send();*@
+}

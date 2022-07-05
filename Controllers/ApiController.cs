@@ -123,5 +123,11 @@ namespace prjAjax.Controllers
             byte[] img = member.FileData;
             return File(img, "image/jpeg");
         }
+
+        public IActionResult Members()
+        {
+            return Json(_context.Members);
+        }
     }
 }
+

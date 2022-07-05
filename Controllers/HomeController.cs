@@ -58,6 +58,12 @@ namespace prjAjax.Controllers
             return View();
         }
 
+
+        public IActionResult HW3()
+        {
+            return View();
+        }
+
         public IActionResult Privacy()
         {
             return View();
