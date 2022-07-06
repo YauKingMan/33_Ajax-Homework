@@ -12,10 +12,11 @@ namespace prjAjax.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-
-        public HomeController(ILogger<HomeController> logger)
+        private readonly DemoContext _context;
+        public HomeController(ILogger<HomeController> logger, DemoContext conetxt)
         {
             _logger = logger;
+            _context = conetxt;
         }
 
         public IActionResult FirstAjax()
@@ -44,6 +45,22 @@ namespace prjAjax.Controllers
         }
 
         public IActionResult Fetch()
+        {
+            return View();
+        }
+
+        public IActionResult History()
+        {
+            return View();
+        }
+
+        public IActionResult Partial()
+        {
+            ViewBag.data = "123ABC";
+            return PartialView(_context.Members);
+        }
+
+        public IActionResult jQuery()
         {
             return View();
         }
